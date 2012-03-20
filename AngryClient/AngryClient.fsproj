@@ -41,8 +41,12 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="App.config" />
-    <None Include="PluginSettings.config" />
-    <Content Include="Mashups\ProfileEditor\ProfileEditor.js" />
+    <None Include="PluginSettings.config" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Mashups\ProfileEditor\ProfileEditor.js" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Compile Include="AngryClient.fs" />
   </ItemGroup>
   <ItemGroup>
