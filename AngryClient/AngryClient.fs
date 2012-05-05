@@ -4,9 +4,8 @@ open System.Runtime.Serialization
 open NServiceBus
 open Tp.Integration.Plugin.Common
 open Tp.Integration.Plugin.Common.Validation
-open Tp.Integration.Messages.EntityLifecycle.Messages
 
-[<assembly:PluginAssembly("AngryClient")>]
+[<assembly:PluginAssembly("AngryClient", "This plugin automatically set angriness value for request.", "Helpers")>]
 do()
 
 [<Profile; DataContract>]
@@ -22,16 +21,7 @@ type public Profile () =
       member this.Validate errors = 
         this.ValidateProject errors |> ignore
 
-    member this.ValidateProject(errors: PluginProfileErrorCollection) =
+    member private this.ValidateProject(errors: PluginProfileErrorCollection) =
         if this.Project <= 0 then 
-            let error = PluginProfileError()
-            error.FieldName <- "Project"
-            error.Message <- "Project should not be empty"
-            errors.Add(error)
+            errors.Add(new PluginProfileError(FieldName = "Project", Message = "Project should not be empty"))
         else ()
-
-type public SetRequestValueHandler (bus: ICommandBus) =  
-
-    interface IHandleMessages<RequestCreatedMessage> with
-        member this.Handle(message: RequestCreatedMessage) = 
-            ()

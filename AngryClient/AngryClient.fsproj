@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>AngryClient</RootNamespace>
     <AssemblyName>AngryClient</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <Name>AngryClient</Name>
     <TargetFrameworkProfile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\TpExperimentalPlugins\</SolutionDir>
@@ -39,15 +39,16 @@
   <Import Project="$(MSBuildExtensionsPath32)\FSharp\1.0\Microsoft.FSharp.Targets" Condition="!Exists('$(MSBuildBinPath)\Microsoft.Build.Tasks.v4.0.dll')" />
   <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft F#\v4.0\Microsoft.FSharp.Targets" Condition=" Exists('$(MSBuildBinPath)\Microsoft.Build.Tasks.v4.0.dll')" />
   <ItemGroup>
-    <None Include="packages.config" />
     <None Include="App.config" />
-    <None Include="PluginSettings.config" >
+    <None Include="PluginSettings.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Content Include="Mashups\ProfileEditor\ProfileEditor.js" >
+    <Content Include="Mashups\ProfileEditor\ProfileEditor.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Compile Include="AngryClient.fs" />
+    <Compile Include="Angriness.fs" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Common.Logging">
@@ -63,29 +64,29 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation">
-      <HintPath>..\packages\TargetProcessPluginSDK.2.22.8.15001\lib\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <HintPath>..\packages\TargetProcessPluginSDK.2.23.3.21882\lib\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Web.Services3">
-      <HintPath>..\packages\TargetProcessPluginSDK.2.22.8.15001\lib\Microsoft.Web.Services3.dll</HintPath>
+      <HintPath>..\packages\TargetProcessPluginSDK.2.23.3.21882\lib\Microsoft.Web.Services3.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="FSharp.Core" />
     <Reference Include="NServiceBus">
-      <HintPath>..\packages\TargetProcessPluginSDK.2.22.8.15001\lib\NServiceBus.dll</HintPath>
+      <HintPath>..\packages\TargetProcessPluginSDK.2.23.3.21882\lib\NServiceBus.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NServiceBus.Core">
-      <HintPath>..\packages\TargetProcessPluginSDK.2.22.8.15001\lib\NServiceBus.Core.dll</HintPath>
+      <HintPath>..\packages\TargetProcessPluginSDK.2.23.3.21882\lib\NServiceBus.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NServiceBus.Host">
-      <HintPath>..\packages\TargetProcessPluginSDK.2.22.8.15001\lib\NServiceBus.Host.exe</HintPath>
+      <HintPath>..\packages\TargetProcessPluginSDK.2.23.3.21882\lib\NServiceBus.Host.exe</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NServiceBus.ObjectBuilder.StructureMap262">
-      <HintPath>..\packages\TargetProcessPluginSDK.2.22.8.15001\lib\NServiceBus.ObjectBuilder.StructureMap262.dll</HintPath>
+      <HintPath>..\packages\TargetProcessPluginSDK.2.23.3.21882\lib\NServiceBus.ObjectBuilder.StructureMap262.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="StructureMap">
@@ -96,28 +97,27 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Reactive">
-      <HintPath>..\packages\TargetProcessPluginSDK.2.22.8.15001\lib\System.Reactive.dll</HintPath>
+      <HintPath>..\packages\Rx-Main.1.0.10621\lib\Net4\System.Reactive.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="Tp.Core">
-      <HintPath>..\packages\TargetProcessPluginSDK.2.22.8.15001\lib\Tp.Core.dll</HintPath>
+      <HintPath>..\packages\TargetProcessPluginSDK.2.23.3.21882\lib\Tp.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Tp.Integration.Messages">
-      <HintPath>..\packages\TargetProcessPluginSDK.2.22.8.15001\lib\Tp.Integration.Messages.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\TargetProcessPluginSDK.2.23.3.21882\lib\Tp.Integration.Messages.dll</HintPath>
     </Reference>
     <Reference Include="Tp.Integration.Plugin.Common">
-      <HintPath>..\packages\TargetProcessPluginSDK.2.22.8.15001\lib\Tp.Integration.Plugin.Common.dll</HintPath>
+      <HintPath>..\packages\TargetProcessPluginSDK.2.23.3.21882\lib\Tp.Integration.Plugin.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Tp.Plugin.Core">
-      <HintPath>..\packages\TargetProcessPluginSDK.2.22.8.15001\lib\Tp.Plugin.Core.dll</HintPath>
+      <HintPath>..\packages\TargetProcessPluginSDK.2.23.3.21882\lib\Tp.Plugin.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Tp.Service.Proxies">
-      <HintPath>..\packages\TargetProcessPluginSDK.2.22.8.15001\lib\Tp.Service.Proxies.dll</HintPath>
+      <HintPath>..\packages\TargetProcessPluginSDK.2.23.3.21882\lib\Tp.Service.Proxies.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

@@ -4,11 +4,11 @@
 .addDependency("tp/plugins/profileRepository")
 .addDependency("libs/jquery/jquery")
 .addMashup(function (bus, profileControlsBlock, profileRepository, jquery, config) {
-	function taskCreatorProfileEditor(config) {
+	function angryClientProfileEditor(config) {
 		this._create(config);
 	}
 
-	taskCreatorProfileEditor.prototype = {
+	angryClientProfileEditor.prototype = {
 		template: null,
 		placeHolder: null,
 		saveBtn: null,
@@ -25,7 +25,7 @@
 			this.template = '<div>' +
                     '<form method="POST">' +
                     '<h2 class="h2">Plugin</h2>' +
-                    '<p class="note">This plugin do something.</p>' +
+                    '<p class="note">Angry client priority for request.</p>' +
                     '<div class="task-creator-settings">' +
                     '	<div class="pad-box">' +
                     '		<p class="label">Profile Name&nbsp;<span class="error" name="NameErrorLabel"></span><br />' +
@@ -47,7 +47,7 @@
                     '</div>';
 
 			this.bus = bus;
-			this.bus.subscribe('TaskCreatorProfileEditor', {
+			this.bus.subscribe('AngryClientProfileEditor', {
 				onSaveProfile: $.proxy(this._saveProfile, this),
 				onProfileSaveSucceed: $.proxy(this._onProfileSaved, this)
 			});
@@ -129,7 +129,7 @@
 		}
 	};
 
-	new taskCreatorProfileEditor({
+	new angryClientProfileEditor({
 		placeHolder: $('#' + config.placeholderId)
 	}).render();
 })
